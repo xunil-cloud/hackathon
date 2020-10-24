@@ -23,7 +23,18 @@ class Comment(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     approved_comment = models.BooleanField(default=False)
-
+    POSITIVE = 'P'
+    NEGITIVE = 'N'
+    COMMENT_TYPE = [
+        (POSITIVE, 'positive'),
+        (NEGITIVE, 'negitive'),
+    ]
+    comment_type = models.CharField(
+        max_length=2,
+        choices=COMMENT_TYPE,
+        default=POSITIVE,
+    )
+    
     def approve(self):
         self.approved_comment = True
         self.save()
