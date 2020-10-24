@@ -1,5 +1,3 @@
-{% load static %}
-
 <!DOCTYPE HTML>
 <!--
 	Tapestry by TEMPLATED
@@ -12,15 +10,17 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-        <link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="/static/css/style.css" type="text/css">
-        <link type="text/css" rel="stylesheet" href="{% static 'css/skel-noscript.css' %}" />
-		<link type="text/css" rel="stylesheet" href="{% static 'css/style-desktop.css' %}" />
-        <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script type=“text/javascript” src="{% static 'js/skel.min.js' %}"></script>
-		<script type=“text/javascript” src="{% static 'js/skel-panels.min.js' %}"></script>
-		<script type=“text/javascript” src="{% static 'js/init.js' %}"></script>
+		<link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet" type="text/css" />
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-panels.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
 	</head>
 	<body class="homepage">
 		<div id="header-wrapper">
@@ -45,7 +45,7 @@
 		<div class="container">
 			<div class="row">
 				<div id="banner" class="12u">
-					<div class="container"><a href="#"><img src="{% static 'images/pics01.jpg' %}" alt=""></a></div>
+					<div class="container"><a href="#"><img src="images/pics01.jpg" alt=""></a></div>
 				</div>
 			</div>
 		</div>
@@ -56,7 +56,7 @@
 						<section>
 							<h2 class="title">Maecenas luctus lectus</h2>
 							<p class="subtitle">In posuere eleifend odio. Quisque semper augue mattis maecenas ligula.</p>
-							<p><a href="#"><img src="{% static 'images/pics02.jpg' %}" alt=""></a></p>
+							<p><a href="#"><img src="images/pics02.jpg" alt=""></a></p>
 							<p class="button-style1"><a href="#">Etiam rhoncus volutpat</a></p>
 						</section>
 					</div>
@@ -64,7 +64,7 @@
 						<section>
 							<h2 class="title">Etiam posuere augue</h2>
 							<p class="subtitle">Donec leo. Vivamus nibh in augue. Praesent a lacus at urna congue rutrum.</p>
-							<p><a href="#"><img src="{% static 'images/pics03.jpg' %}" alt=""></a></p>
+							<p><a href="#"><img src="images/pics03.jpg" alt=""></a></p>
 							<p class="button-style1"><a href="#">Praesent mattis condimentum</a></p>
 						</section>
 					</div>
@@ -72,7 +72,7 @@
 						<section>
 							<h2 class="title">Fusce ultrices fringilla</h2>
 							<p class="subtitle">Pellentesque pede. Donec pulvinar metus. In eu lectus pulvinar mollis. </p>
-							<p><a href="#"><img src="{% static 'images/pics04.jpg' %}" alt=""></a></p>
+							<p><a href="#"><img src="images/pics04.jpg" alt=""></a></p>
 							<p class="button-style1"><a href="#">Praesent scelerisque</a></p>
 						</section>
 					</div>
@@ -80,7 +80,7 @@
 						<section>
 							<h2 class="title">Nulla luctus eleifend</h2>
 							<p class="subtitle">In posuere eleifend odio. Quisque semper augue sed maecenas ligula.</p>
-							<p><a href="#"><img src="{% static 'images/pics05.jpg' %}" alt=""></a></p>
+							<p><a href="#"><img src="images/pics05.jpg" alt=""></a></p>
 							<p class="button-style1"><a href="#">Fusce ultrices fringilla</a></p>
 						</section>
 					</div>
@@ -93,7 +93,7 @@
 							<section>
 								<div class="post">
 									<h2>Integer gravida nibh quis urna</h2>
-									<p><a href="#"><img src="{% static 'images/pics06.jpg' %}" alt=""></a><br>
+									<p><a href="#"><img src="images/pics06.jpg" alt=""></a><br>
 									This is <strong>Tapestry</strong>, a responsive HTML5 site template freebie by <a href="http://templated.co">TEMPLATED</a>. Released for free under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so use it for whatever (personal or commercial) &ndash; just give us credit! Check out more of our stuff at <a href="http://templated.co">our site</a> or follow us on <a href="http://twitter.com/templatedco">Twitter</a>.</p>
 									<p class="button-style2"><a href="#">Read Full Article</a></p>
 								</div>
@@ -105,16 +105,16 @@
 							<h2>Ipsum Consequat</h2>
 							<ul class="style2">
 								<li class="first">
-									<p><a href="#"><img src="{% static 'images/pics07.jpg' %}" alt="">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. </a></p>
+									<p><a href="#"><img src="images/pics07.jpg" alt="">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. </a></p>
 								</li>
 								<li>
-									<p><a href="#"><img src="{% static 'images/pics08.jpg' %}" alt="">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. </a></p>
+									<p><a href="#"><img src="images/pics08.jpg" alt="">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. </a></p>
 								</li>
 								<li>
-									<p><a href="#"><img src="{% static 'images/pics09.jpg' %}" alt="">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. </a></p>
+									<p><a href="#"><img src="images/pics09.jpg" alt="">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. </a></p>
 								</li>
 								<li>
-									<p><a href="#"><img src="{% static 'images/pics10.jpg' %}" alt="">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. </a></p>
+									<p><a href="#"><img src="images/pics10.jpg" alt="">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. </a></p>
 								</li>
 							</ul>
 						</section>
@@ -156,7 +156,7 @@
 				<div class="row divider">
 					<div class="4u">
 						<section>
-							<div class="box-style"> <a href="#"><img src="{% static 'images/pics04.jpg' %}" alt=""></a>
+							<div class="box-style"> <a href="#"><img src="images/pics04.jpg" alt=""></a>
 								<h3>Etiam posuere augue</h3>
 								<p>Donec nonummy magna quis risus. Quisque eleifend. </p>
 								<p class="button-style2"><a href="#">More</a></p>
@@ -165,7 +165,7 @@
 					</div>
 					<div class="4u">
 						<section>
-							<div class="box-style"> <a href="#"><img src="{% static 'images/pics03.jpg' %}" alt=""></a>
+							<div class="box-style"> <a href="#"><img src="images/pics03.jpg" alt=""></a>
 								<h3>Etiam posuere augue</h3>
 								<p>Donec nonummy magna quis risus. Quisque eleifend. </p>
 								<p class="button-style2"><a href="#">More</a></p>
@@ -174,7 +174,7 @@
 					</div>
 					<div class="4u">
 						<section>
-							<div class="box-style"> <a href="#"><img src="{% static 'images/pics05.jpg' %}" alt=""></a>
+							<div class="box-style"> <a href="#"><img src="images/pics05.jpg" alt=""></a>
 								<h3>Etiam posuere augue</h3>
 								<p>Donec nonummy magna quis risus. Quisque eleifend. </p>
 								<p class="button-style2"><a href="#">More</a></p>
@@ -247,15 +247,6 @@
 		</div>
 		<div id="copyright" class="container">
 			Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
-        </div>
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
-                {% block content %}
-                {% endblock %}
-                </div>
-            </div>
-        </div>
-
+		</div>
 	</body>
 </html>
