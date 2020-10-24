@@ -1,11 +1,5 @@
 {% load static %}
-
 <!DOCTYPE HTML>
-<!--
-	Tapestry by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
 <html>
 	<head>
 		<title>News by Hate Square</title>
@@ -32,73 +26,39 @@
 					</div>
 					<nav id="nav">
 						<ul>
-							<li class="current_page_item"><a href="index.html">Homepage</a></li>
-							<li><a href="threecolumn.html">Politic</a></li>
-							<li><a href="twocolumn1.html">Society</a></li>
-							<li><a href="twocolumn2.html">Entertainment</a></li>
-							<li><a href="onecolumn.html">Sport</a></li>
+							<li class="current_page_item"><a href="../..">Homepage</a></li>
+							<li><a href="https://free.com.tw/templated/">Politic</a></li>
+							<li><a href="../../twocolumn1.html">Society</a></li>
+							<li><a href="../../twocolumn2.html">Entertainment</a></li>
+							<li><a href="{% url 'onecolumn' %}">Sport</a></li>
 						</ul>
 					</nav>
 				</div>
 			</div>
 		</div>
+		
 		<div class="container">
+			{% block news%}
 			<div class="row">
 				<div id="banner" class="12u">
 					<div class="container"><a href="#"><img src="{% static 'images/pics01.jpg' %}" alt=""></a></div>
 				</div>
 			</div>
 		</div>
-        <div id="wrapper">
-            <div class="container" id="marketing">
-                <div class="row divider">
-                    <div class="3u">
-                        <section>
-                            <h2 class="title">Maecenas luctus lectus</h2>
-                            <p class="subtitle">In posuere eleifend odio. Quisque semper augue mattis maecenas ligula.</p>
-                            <p><a href="#"><img src="{% static 'images/pics02.jpg' %}" alt=""></a></p>
-                            <p class="button-style1"><a href="#">Etiam rhoncus volutpat</a></p>
-                        </section>
-                    </div>
-                    <div class="3u">
-                        <section>
-                            <h2 class="title">Etiam posuere augue</h2>
-                            <p class="subtitle">Donec leo. Vivamus nibh in augue. Praesent a lacus at urna congue rutrum.</p>
-                            <p><a href="#"><img src="{% static 'images/pics03.jpg' %}" alt=""></a></p>
-                            <p class="button-style1"><a href="#">Praesent mattis condimentum</a></p>
-                        </section>
-                    </div>
-                    <div class="3u">
-                        <section>
-                            <h2 class="title">Fusce ultrices fringilla</h2>
-                            <p class="subtitle">Pellentesque pede. Donec pulvinar metus. In eu lectus pulvinar mollis. </p>
-                            <p><a href="#"><img src="{% static 'images/pics04.jpg' %}" alt=""></a></p>
-                            <p class="button-style1"><a href="#">Praesent scelerisque</a></p>
-                        </section>
-                    </div>
-                    <div class="3u">
-                        <section>
-                            <h2 class="title">Nulla luctus eleifend</h2>
-                            <p class="subtitle">In posuere eleifend odio. Quisque semper augue sed maecenas ligula.</p>
-                            <p><a href="#"><img src="{% static 'images/pics05.jpg' %}" alt=""></a></p>
-                            <p class="button-style1"><a href="#">Fusce ultrices fringilla</a></p>
-                        </section>
-                    </div>
-                </div>
-            </div>
-            
-
-		<div id="copyright" class="container">
-			Design: <a href="http://www2.ee.ncu.edu.tw/">NCU</a>
-        </div>
-        <div class="content container">
+       <div class="content container">
             <div class="row">
                 <div class="col-md-8">
                 {% block content %}
                 {% endblock %}
                 </div>
-            </div>
+			</div>
+			{% endblock %}
+		</div>
+		
+		<div id="copyright" class="container">
+			Design: <a href="http://www2.ee.ncu.edu.tw/">NCU</a>
         </div>
+        
 
 	</body>
 </html>
