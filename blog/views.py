@@ -21,6 +21,12 @@ def add_comment_to_post(request, pk):
             comment = form.save(commit=False)
             comment.post = post
             comment.save()
+            if (form.cleaned_data.get('comment_type') == 'P'):
+                comment.post.number_of_positive_comments += 1
+                comment.post.save()
+            if (form.cleaned_data.get('comment_type') == 'N'):
+                comment.post.number_of_negative_comments += 1
+                comment.post.save()
             return redirect('post_detail', pk=post.pk)
     else:
         form = CommentForm()

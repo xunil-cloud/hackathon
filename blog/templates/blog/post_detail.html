@@ -11,6 +11,49 @@
         <p>{{ post.text|linebreaksbr }}</p>
     </div>
     <hr>
+    <div id="main" style="width: 1300px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+ 
+        // 指定图表的配置项和数据
+        var option = {
+			
+            title: {
+                text: 'Negative V.S Positive '
+            },
+
+            tooltip: {},
+            legend: {
+                data:['rate']
+            },
+            xAxis: {
+                data: ["Negative","Positive"]
+            },
+            yAxis: {
+			},
+            series: [{
+                name: '',
+                type: 'bar',
+				barCategoryGap:'60%',//設定長條圖間距				
+				itemStyle: {
+				normal: {
+                // 設定顏色
+                color: function(params) { 
+                    var colorList = ['#004B97','#FF5151' ]; 
+                    return colorList[params.dataIndex] 
+                }
+            },
+        },
+                data: [{{ post.getPercentageOfPositiveComments }},{{ post.getPercentageOfNegativeComments }}]
+				
+				
+            }]
+        };
+ 
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
 {% for comment in post.comments.all %}
 {% if user.is_authenticated or comment.approved_comment %}
     <div class="comment">
@@ -29,5 +72,7 @@
 {% empty %}
     <p>No comments here yet :(</p>
 {% endfor %}
+<p> posituve_count: {{ post.number_of_positive_comments }}</p>
+<p> negative_count: {{ post.number_of_negative_comments }}</p>
 <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 {% endblock %}
