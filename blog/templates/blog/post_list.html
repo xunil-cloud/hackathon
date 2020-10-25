@@ -11,7 +11,7 @@
                     <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
                     <!--<p>{{ post.text|linebreaksbr }}</p>-->
                     <p class="subtitle">subtitle</p>
-                    <p><a href="#"><img src="{% static 'images/pics02.jpg' %}" alt=""></a></p>
+                    <img src="{{ post.img.url }}">
                     <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
                     <p class="button-style1"><a href="#">NPL</a></p>
                 </section>
