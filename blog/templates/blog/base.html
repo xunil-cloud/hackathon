@@ -14,7 +14,8 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script type=“text/javascript” src="{% static 'js/skel.min.js' %}"></script>
 		<script type=“text/javascript” src="{% static 'js/skel-panels.min.js' %}"></script>
-		<script type=“text/javascript” src="{% static 'js/init.js' %}"></script>
+        <script type=“text/javascript” src="{% static 'js/init.js' %}"></script>
+        <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
 	</head>
 	<body class="homepage">
 		<div id="header-wrapper">
@@ -27,21 +28,30 @@
 					<nav id="nav">
 						<ul>
 							<li class="current_page_item"><a href="../..">Homepage</a></li>
-							<li><a href="https://free.com.tw/templated/">Politic</a></li>
-							<li><a href="../../twocolumn1.html">Society</a></li>
-							<li><a href="../../twocolumn2.html">Entertainment</a></li>
+							<li><a href="https://www.youtube.com/watch?v=6NwPlOmy_JI">Politic</a></li>
+							<li><a href="{% url 'twocolumn1' %}">Society</a></li>
+							<li><a href="{% url 'twocolumn2' %}">Entertainment</a></li>
 							<li><a href="{% url 'onecolumn' %}">Sport</a></li>
 						</ul>
 					</nav>
 				</div>
+				<br>
+				<div align="right">
+					<form role="search" method="get" id="searchform" action="{% url 'search' %}">
+					<input type="search" name="q" placeholder="搜尋" required>
+					<button type="submit"><span class="ion-ios-search-strong"></span>Send</button>
+					</form>
+				</div>
 			</div>
 		</div>
-		
+	
 		<div class="container">
 			{% block news%}
+				<p style='font-size:200%'><a href="#">Hot</a></p>
+			
 			<div class="row">
 				<div id="banner" class="12u">
-					<div class="container"><a href="#"><img src="{% static 'images/pics01.jpg' %}" alt=""></a></div>
+					<div class="container"><a href="#"><img src="{% static 'images/photo-0.png' %}" alt=""></a></div>
 				</div>
 			</div>
 		</div>

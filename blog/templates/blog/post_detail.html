@@ -6,29 +6,104 @@
             <div class="date">
                 {{ post.published_date }}
             </div>
+            <br>
         {% endif %}
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.text|linebreaksbr }}</p>
+        <h1>{{ post.title }}</h1>
+        <p style='line-height: 150%'>{{ post.text|linebreaksbr }}</p>
     </div>
     <hr>
-{% for comment in post.comments.all %}
-{% if user.is_authenticated or comment.approved_comment %}
-    <div class="comment">
-        <div class="date">
-            {{ comment.created_date }}
-            {% if not comment.approved_comment %}
-                <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-                <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
-                
-            {% endif %}
-        </div>
-        <strong>{{ comment.author }}</strong>
-        <p>{{ comment.text|linebreaks }}</p>
+    <div id="main" style="width: 1300px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+ 
+        // 指定图表的配置项和数据
+        var option = {
+			
+            grid:{
+                  x:30,
+                  y:50,
+                  x2:50,
+                  y2:50,
+                  
+            },
+            tooltip: {},
+            legend: {
+                data:['rate']
+            },
+            xAxis: {
+                data: ["OPPOSITE","SUPPORT"]
+            },
+            yAxis: {
+			},
+            series: [{
+                name: '',
+                type: 'bar',
+				barCategoryGap:'60%',//設定長條圖間距				
+				itemStyle: {
+				normal: {
+                // 設定顏色
+                color: function(params) { 
+                    var colorList = ['#004B97','#FF5151' ]; 
+                    return colorList[params.dataIndex] 
+                }
+            },
+        },
+                data: [{{ post.getPercentageOfNegativeComments }},{{ post.getPercentageOfPositiveComments }}]
+				
+				
+            }]
+        };
+ 
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+
+<div >
+<div id="featured-area">
+    <div class="container">
+        <div class="row divider">
+            <div class="6u">
+                <h1>OPPOSITE</h1>
+                {% for comment in post.comments.all %}
+                {% if comment.comment_type == 'N' %}
+                <section>
+                    <div class="box-style" > <a href="#"><img src="images/pics04.jpg" alt=""></a>
+                        <div class="date">{{ comment.created_date }}</div>
+                        <strong>{{ comment.author }}</strong>
+                        <p>{{ comment.text|linebreaks }}</p>
+                    </div>
+                </section>
+                {% endif %}
+                {% empty %}
+                <p>No comments here yet :(</p>
+                {% endfor %}
+            </div>
+
+            
+            <div class="6u">
+                <h3>SUPPORT</h3>
+                {% for comment in post.comments.all %}
+                {% if comment.comment_type == 'P' %}
+                <section>
+                    <div class="box-style"> <a href="#"><img src="images/pics05.jpg" alt=""></a>
+                        <div class="date">{{ comment.created_date }}</div>
+                        <strong>{{ comment.author }}</strong>
+                        <p>{{ comment.text|linebreaks }}</p>
+                    </div>
+                </section>
+                {% endif %}
+                {% empty %}
+                    <p>No comments here yet :(</p>
+                {% endfor %}
+            </div> 
+        </div> 
     </div>
-    {% endif %}
-{% empty %}
-    <p>No comments here yet :(</p>
-{% endfor %}
+</div>
+</div>
+
+<p> OPPO: {{ post.number_of_positive_comments }} &nbsp &nbsp &nbsp SUP: {{ post.number_of_negative_comments }}</p>
+<br></br>
     <h1>New comment</h1>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}

@@ -9,13 +9,26 @@ class Post(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-
+    number_of_positive_comments = models.IntegerField(default=0)
+    number_of_negative_comments = models.IntegerField(default=0)
     def publish(self):
         self.published_date = timezone.now()
         self.save()
 
     def __str__(self):
         return self.title
+    
+    def getPercentageOfPositiveComments(self):
+        if self.number_of_positive_comments + self.number_of_negative_comments == 0:
+            return 0
+        p = self.number_of_positive_comments / (self.number_of_positive_comments + self.number_of_negative_comments) * 100
+        return p
+
+    def getPercentageOfNegativeComments(self):
+        if self.number_of_positive_comments + self.number_of_negative_comments == 0:
+            return 0
+        p = self.number_of_negative_comments / (self.number_of_positive_comments + self.number_of_negative_comments) * 100
+        return p
 
 class Comment(models.Model):
     post = models.ForeignKey('blog.Post', on_delete=models.CASCADE, related_name='comments')
@@ -24,10 +37,10 @@ class Comment(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     approved_comment = models.BooleanField(default=False)
     POSITIVE = 'P'
-    NEGITIVE = 'N'
+    NEGATIVE = 'N'
     COMMENT_TYPE = [
         (POSITIVE, 'positive'),
-        (NEGITIVE, 'negitive'),
+        (NEGATIVE, 'negative'),
     ]
     comment_type = models.CharField(
         max_length=2,
