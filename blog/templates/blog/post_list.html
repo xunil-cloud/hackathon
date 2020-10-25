@@ -9,8 +9,9 @@
                 <section>
                     <p style="font-size : 120% ;line-height: 150%"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></p>
                     <!--<p>{{ post.text|linebreaksbr }}</p>-->
+
                     <div class="date">{{ post.published_date }}</div>
-                    <p><a href="{% url 'post_detail' pk=post.pk %}"><img src="{% static 'images/photo-1.jpg' %}" alt=""></a></p>
+                    <p><img src="{{ post.img.url }}"></p>
                     <p class="button-style1"><a href="#">CONFERENCE</a></p>
                     <br></br>
                 </section>
