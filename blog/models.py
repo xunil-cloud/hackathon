@@ -19,10 +19,14 @@ class Post(models.Model):
         return self.title
     
     def getPercentageOfPositiveComments(self):
+        if self.number_of_positive_comments + self.number_of_negative_comments == 0:
+            return 0
         p = self.number_of_positive_comments / (self.number_of_positive_comments + self.number_of_negative_comments) * 100
         return p
 
     def getPercentageOfNegativeComments(self):
+        if self.number_of_positive_comments + self.number_of_negative_comments == 0:
+            return 0
         p = self.number_of_negative_comments / (self.number_of_positive_comments + self.number_of_negative_comments) * 100
         return p
 
