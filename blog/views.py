@@ -15,15 +15,16 @@ def twocolumn2(request):
     return render(request, 'blog/twocolumn2.html')
 
 def search(request):
-    q = request.GET.get('q')
+    return redirect('post_list')
+    #q = request.GET.get('q')
 
-    if not q:
-        error_msg = "請輸入搜尋關鍵詞"
-        messages.add_message(request, messages.ERROR, error_msg, extra_tags='danger')
-        return redirect('blog:index')
+    #if not q:
+    #    error_msg = "請輸入搜尋關鍵詞"
+    #    messages.add_message(request, messages.ERROR, error_msg, extra_tags='danger')
+    #    return redirect('blog:index')
 
-    post_list = Post.objects.filter(Q(title__icontains=q) | Q(body__icontains=q))
-    return render(request, 'blog/index.html', {'post_list': post_list})
+    #post_list = Post.objects.filter(Q(title__icontains=q) | Q(body__icontains=q))
+    #return render(request, 'blog/index.html', {'post_list': post_list})
     
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')

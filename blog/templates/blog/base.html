@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>News by Hate Square</title>
+		<title>「休戰」幾勒</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -22,15 +22,15 @@
 			<div class="container">
 				<div id="header">
 					<div id="logo">
-						<h1><a href="#">News</a></h1>
-						<span>by HATE SQUARE</span>
+						<h1><a href="{% url 'post_list' %}">「休戰」幾勒</a></h1>
+						<span>By Hate Squirrel</span>
 					</div>
 					<nav id="nav">
 						<ul>
 							<li class="current_page_item"><a href="../..">Homepage</a></li>
-							<li><a href="https://www.youtube.com/watch?v=6NwPlOmy_JI">Politic</a></li>
+							<li><a href="https://www.youtube.com/watch?v=6NwPlOmy_JI">COVID-19</a></li>
 							<li><a href="{% url 'twocolumn1' %}">Society</a></li>
-							<li><a href="{% url 'twocolumn2' %}">Entertainment</a></li>
+							<li><a href="{% url 'twocolumn2' %}">Politic</a></li>
 							<li><a href="{% url 'onecolumn' %}">Sport</a></li>
 						</ul>
 					</nav>
@@ -39,7 +39,7 @@
 				<div align="right">
 					<form role="search" method="get" id="searchform" action="{% url 'search' %}">
 					<input type="search" name="q" placeholder="搜尋" required>
-					<button type="submit"><span class="ion-ios-search-strong"></span>Send</button>
+					<button type="submit"><span class="ion-ios-search-strong"></span>Search</button>
 					</form>
 				</div>
 			</div>
@@ -66,7 +66,7 @@
 		</div>
 		
 		<div id="copyright" class="container">
-			Design: <a href="http://www2.ee.ncu.edu.tw/">NCU</a>
+			<a href="http://www2.ee.ncu.edu.tw/">Design by NCU</a>
         </div>
         
 
